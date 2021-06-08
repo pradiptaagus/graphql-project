@@ -4,8 +4,10 @@ import {
 	getUser,
 	storeUser,
 	updateUser,
+	updatePassword,
 	deleteUser,
 } from "../controllers/user/user.controller";
+import { login } from "../controllers/auth/auth.controller";
 
 const rootQuery = new GraphQLObjectType({
 	name: "Query",
@@ -18,8 +20,10 @@ const rootQuery = new GraphQLObjectType({
 const mutation = new GraphQLObjectType({
 	name: "Mutation",
 	fields: {
+		login,
 		storeUser,
 		updateUser,
+		updatePassword,
 		deleteUser,
 	},
 });
