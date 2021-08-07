@@ -1,5 +1,4 @@
 import { GraphQLBoolean, GraphQLID, GraphQLInt, GraphQLString } from "graphql";
-import PaginationType from "../../type-defs/pagination.type";
 import UserType from "../../type-defs/user.type";
 import UserService from "./user.service";
 import validator from "validator";
@@ -8,9 +7,10 @@ import Bcrypt from "../../helpers/bcrypt.helper";
 import Authorization from "../../helpers/authorization.helper";
 import Token from "../../helpers/token.helper";
 import { NotFoundError } from "../../errors/not-found.error";
+import UsersType from "../../type-defs/users.type";
 
 export const getUsers = {
-	type: PaginationType(UserType),
+	type: UsersType,
 	args: {
 		filter: { type: GraphQLString },
 		page: { type: GraphQLInt },
@@ -271,7 +271,7 @@ export const deleteUser = {
 
 			if (validator.isEmpty(id)) {
 				throw new InputError({
-					id: "The user with specified ID is doesn't exist.",
+					id: "The id is required.",
 				});
 			}
 

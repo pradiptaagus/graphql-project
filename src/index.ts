@@ -10,7 +10,7 @@ const app = express();
 
 createConnection()
 	.then(() => {
-		app.use(bodyParser.graphql());
+		// app.use(bodyParser.graphql());
 		app.use(cors());
 
 		app.use(

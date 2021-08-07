@@ -1,17 +1,7 @@
-import { GraphQLInt, GraphQLList, GraphQLObjectType } from "graphql";
+import { GraphQLInt, GraphQLObjectType } from "graphql";
 
-const PaginationType = (itemType: GraphQLObjectType) => {
-	return new GraphQLObjectType({
-		name: "Pagination",
-		fields: () => ({
-			pagination: { type: PageInfoType },
-			data: { type: GraphQLList(itemType) },
-		}),
-	});
-};
-
-const PageInfoType: GraphQLObjectType = new GraphQLObjectType({
-	name: "PageInfo",
+const PaginationType: GraphQLObjectType = new GraphQLObjectType({
+	name: "Pagination",
 	fields: () => ({
 		total: { type: GraphQLInt },
 		size: { type: GraphQLInt },
